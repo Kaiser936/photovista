@@ -8,20 +8,18 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    {# Ajoutez d'autres liens de feuilles de style si nécessaire #}
     {% endblock %}
 </head>
 <body>
     {% include 'components/header.html.twig' %}
     
     {% block body %}
-        {# Contenu spécifique à la page héritée #}
+
     {% endblock %}
 
     {% block javascripts %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
-    {# Ajoutez d'autres scripts si nécessaire #}
     {% endblock %}
 
     {% include 'components/footer.html.twig' %}

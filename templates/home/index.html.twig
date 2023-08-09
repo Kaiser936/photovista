@@ -3,17 +3,18 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-<div class="container" style="padding-top: 100px;">
+<div class="container-fluid">
 
-    <div class="text-center">
+    <div class="promo-banner text-center">
         <div class="promo-content">
-            <h2>Photographe professionnel ou amateur ? Rejoignez notre réseau social dédié</h2>
-            <p>Partagez vos meilleures photos, échangez avec d'autres passionnés et découvrez de nouvelles opportunités.</p>
+            <h2 class="promo-title">Photographe professionnel ou amateur ? Rejoignez notre réseau social dédié</h2>
+            <p class="promo-description">Partagez vos meilleures photos, échangez avec d'autres passionnés et découvrez de nouvelles opportunités.</p>
             {% if not is_granted('ROLE_USER') %}
-            <a href="{{ path('app_inscription') }}" class="btn btn-primary">Inscrivez-vous maintenant</a>
+                <a href="{{ path('app_inscription') }}" class="btn btn-primary">Inscrivez-vous maintenant</a>
             {% endif %}
         </div>
     </div>
+
 
     <h1 class="text-center mt-4">Dernières publications</h1>
 
