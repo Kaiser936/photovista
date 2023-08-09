@@ -7,7 +7,7 @@
 
     <div class="text-center">
         <div class="promo-content">
-            <h2 style='color:white'>Photographe professionnel ou amateur ? Rejoignez notre réseau social dédié</h2>
+            <h2>Photographe professionnel ou amateur ? Rejoignez notre réseau social dédié</h2>
             <p>Partagez vos meilleures photos, échangez avec d'autres passionnés et découvrez de nouvelles opportunités.</p>
             {% if not is_granted('ROLE_USER') %}
             <a href="{{ path('app_inscription') }}" class="btn btn-primary">Inscrivez-vous maintenant</a>
