@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center">Toutes les publications</h1>
+    <div class="row d-flex justify-content-center">
+        {% for post in post %}
+        <div class="card h-100" style="width: 18rem;">
+            <img src="{{ asset('uploads/' ~ post.picture) }}" class="card-img-top" alt="..." style="object-fit: cover; height: 200px;">
+            <div class="card-body">
+                <!-- Contenu de la carte -->
+                {# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalImg{{ post.id }}">
+                    Aperçu
+                </button> #}
+                <div>
+
+                    <i class="fa-regular fa-heart like"></i>
+                    <a href="#"></a><i class="fa-regular fa-comment comment" data-toggle="modal" data-target="#exampleModal2"></i>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Fenêtre modale d'aperçu d'image -->
+        <div class="modal fade" id="modalImg{{ post.id }}" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="{{ asset('uploads/' ~ post.picture) }}" class="img-fluid" alt="...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+        <!-- Fenetre modale de commentaire -->
+        <div class="modal fade centered" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+                <h5 class="modal-title" id="exampleModalLabel">Nouveau commentaire</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="comment-window">
+                <textarea class="form-control" rows="3" placeholder="Entrez votre commentaire ici"></textarea>
+                <button class="btn btn-primary">Ajouter</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

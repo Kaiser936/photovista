@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes publications{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center">Mes publications</h1>
+
+        <div class="btn-publier text-center">
+            <a href="{{ path('app_add_post') }}">
+            <img src="{{asset('images/btn-publier.png')}}" alt=""></a>
+            <p>Publiez vos photos!</p>
+            </div>
+        <div class="bg-light p-5 row">
+            {% for post in posts %}
+            <div class="card h-20" style="width: 18rem;">
+                <img src="{{ asset('uploads/' ~ post.picture) }}" class="card-img-top" alt="..." style="object-fit: cover; height: 200px;">
+                <div class="card-body">
+                    <!-- Contenu de la carte -->
+                        <a href="{{ path('app_single_post', {'id': post.id}) }}" style="color:white" class="btn btn-primary">Gérer ma publication</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
