@@ -1,53 +1,39 @@
-{# <header>
-    <nav class="navbar navbar-expand-lg bg-body" id="ftco-navbar">
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo" width="45%" class="d-inline-block align-text-top">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand" href="#">PhotoVista</a>
+
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="{{ path('app_home') }}" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="{{ path('app_galerie') }}" class="nav-link">Galerie</a></li>
-            
-                    {% if app.user %}
-                        <li class="nav-item"><a href="{{ path('app_profil') }}" class="nav-link">Profil</a></li>
-                        <li class="nav-item"><a href="{{ path('app_publication') }}" class="nav-link">Mes publications</a></li>
-                        <li class="nav-item"><a href="{{ path('app_logout') }}" class="nav-link">Déconnexion</a></li>
-                    {% else %}
-                        <li class="nav-item"><a href="{{ path('app_inscription') }}" class="nav-link">Inscription</a></li>
-                        <li class="nav-item"><a href="{{ path('app_login') }}" class="nav-link">Connexion</a></li>
-                    {% endif %}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Ajouter un article</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Fil d'actu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Messagerie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Notifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Profil</a>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>
-</header> #}
-
-<header>
-    <nav>
-        <div class="container">
-            <div class="logo">
-                <img src="{{ asset('images/logo.png') }}" alt="">
-            </div>
-
-            <div class="search">
-            <input type="search" name="search" id="search" class="form-control">
-            <input type="button" value="valider" class="form-control">
-            </div>
-            
-            <div class="nav-item">
-                <a href="">Publier</a>
-                <a href="">Home</a>
-                <a href="">Fil d'actualité</a>
-                <a href="">Messagerie</a>
-                <a href="">Notifications</a>
-                <a href="">Profil</a>
-
-            </div>
-        </div>
-    </nav>
+</nav>
 </header>
