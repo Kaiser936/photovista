@@ -1,0 +1,14 @@
+@media (min-width: 992px) {
+    /* Styles pour les écrans de taille moyenne et plus grands (PC) */
+    .navbar {
+        flex-direction: column; /* Empile les éléments en colonne */
+        align-items: flex-start; /* Aligne les éléments à gauche */
+        height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    }
+    .navbar-toggler {
+        display: none; /* Cache le bouton de bascule du menu */
+    }
+    .navbar-collapse {
+        display: block !important; /* Force l'affichage du menu déroulant */
+    }
+}

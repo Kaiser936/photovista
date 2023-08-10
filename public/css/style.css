@@ -18,3 +18,10 @@
   text-align: center;
   color: white;
 }
+
+.carousel-item img {
+  max-height: 480px;
+  max-width: 1080px;
+  width: auto;
+  object-fit: cover;
+}

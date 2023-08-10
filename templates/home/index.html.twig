@@ -3,7 +3,7 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
+{# <div class="container-fluid">
 
     <div class="promo-banner text-center">
         <div class="promo-content">
@@ -18,28 +18,29 @@
 
     <h1 class="text-center mt-4">Dernières publications</h1>
 
-    <div id="carouselExample" class="carousel slide col-6 m-auto" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            {% for post in posts|slice(-3, 3) %}
-                <div class="carousel-item {% if loop.first %}active{% endif %}">
-                    <img src="{{ asset('uploads/' ~ post.picture) }}" class="d-block w-100" alt="...">
-                </div>
-            {% endfor %}
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        {% for post in posts|slice(-3, 3) %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <img src="{{ asset('uploads/' ~ post.picture) }}" class="d-block w-100 m-auto" alt="...">
+            </div>
+        {% endfor %}
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
 
     <div class="text-center">
         <h2 class="mt-6"><i class="fa-solid fa-camera"></i></h2>
         <h3>Toi aussi viens poster tes meilleures photos !</h3>
     </div>
-</div>
+</div> #}
 
 {% endblock %}
