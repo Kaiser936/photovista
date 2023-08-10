@@ -1,0 +1,4 @@
+.navbar-nav{
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+}
