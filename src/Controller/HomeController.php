@@ -7,7 +7,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 class HomeController extends AbstractController
 {
     /**
@@ -15,8 +14,8 @@ class HomeController extends AbstractController
      */
     public function index(EntityManagerInterface $manager): Response
     {
+        // Récupération des posts
         $posts = $manager->getRepository(Post::class)->findAll();
-        // dd($posts);
 
         return $this->render('home/index.html.twig', [
             'posts' => $posts,

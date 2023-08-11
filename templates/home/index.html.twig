@@ -3,44 +3,7 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-
-    <div class="promo-banner text-center">
-        <div class="promo-content">
-            <h2 class="promo-title">Photographe professionnel ou amateur ? Rejoignez notre réseau social dédié</h2>
-            <p class="promo-description">Partagez vos meilleures photos, échangez avec d'autres passionnés et découvrez de nouvelles opportunités.</p>
-            {% if not is_granted('ROLE_USER') %}
-                <a href="{{ path('app_inscription') }}" class="btn btn-primary">Inscrivez-vous maintenant</a>
-            {% endif %}
-        </div>
-    </div>
-
-
-    <h1 class="text-center mt-4">Dernières publications</h1>
-
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        {% for post in posts|slice(-3, 3) %}
-            <div class="carousel-item {% if loop.first %}active{% endif %}">
-                <img src="{{ asset('uploads/' ~ post.picture) }}" class="d-block w-100 m-auto" alt="...">
-            </div>
-        {% endfor %}
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-
-
-    <div class="text-center">
-        <h2 class="mt-6"><i class="fa-solid fa-camera"></i></h2>
-        <h3>Toi aussi viens poster tes meilleures photos !</h3>
-    </div>
-</div>
-
+    {% if not is_granted('ROLE_USER') %}
+        <meta http-equiv="refresh" content="0;url={{ path('app_login') }}">
+    {% endif %}
 {% endblock %}
