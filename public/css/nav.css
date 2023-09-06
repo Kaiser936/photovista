@@ -34,3 +34,7 @@
 .nav-item a {
     color: rgb(17, 17, 17) !important;
 }
+
+header {
+    background-color: rgb(255, 255, 255);
+}
