@@ -1,0 +1,20 @@
+.container-login {
+    height: 200px;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.container-inscription {
+    height: 200px;
+    width: 50%;
+    margin: auto;
+    margin-top: 7%;
+    display: flex;
+    flex-direction: column;
+}
+

@@ -2,3 +2,35 @@
     max-width: 10%;
 }
 
+.connexion {
+    background-color: rgb(255, 128, 0);
+    border: none;
+    border-radius: 5px;
+    margin: 0px 3px;
+}
+
+.connexion a {
+    color: rgb(255, 255, 255);
+}
+
+.connexion:hover {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    margin: 0px 3px;
+}
+
+.nav-item:hover {
+    background-color: rgb(255, 128, 0);
+    border: none;
+    border-radius: 5px;
+    margin: 0px 3px;
+}
+
+.nav-item a:hover {
+    color: white;
+}
+
+.nav-item a {
+    color: rgb(17, 17, 17) !important;
+}

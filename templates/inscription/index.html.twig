@@ -1,15 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello InscriptionController!{% endblock %}
+{% block title %}PhotoVista | Inscription{% endblock %}
 
 {% block body %}
 
-<div class="container">
+<div class="container-inscription">
     <h1>Inscription</h1>
     
-    {{ form(form) }}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+    
+    {{ form_start(form) }}
+    
+    {{ form_row(form.email, {'attr': {'class': 'form-control form-control mb-3'}}) }}
+    {{ form_row(form.password, {'attr': {'class': 'form-control form-control mb-3'}}) }}
+    {{ form_row(form.pseudo, {'attr': {'class': 'form-control form-control mb-3'}}) }}
+    {{ form_row(form.biographie, {'attr': {'class': 'form-control form-control mb-3'}}) }}
+    {{ form_row(form.submit, {'attr': {'class': 'btn btn-warning mb-3'}}) }}
 
+    {{ form_end(form) }}
 </div>
-
 
 {% endblock %}

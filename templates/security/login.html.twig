@@ -1,62 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
-<form method="post">
-    <div class="flex flex-col lg:flex-row mx-auto px-4 lg:px-0 max-w-screen-md items-center h-screen">
-        <div class="flex flex-col w-full lg:w-2/5 justify-center h-full max-w-md m-auto">
-        <div class="login-container rounded">
-            <h1 class="flex justify-center w-full text-center">
-                <img src="{{asset ('images/logo.png')}}" alt="PhotoVista" class="img-fluid mt-2 w-6/12 mb-4">
-            </h1>
+    <form method="post" class="">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-            {% if error %}
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-            {% endif %}
-
-            {% if app.user %}
+        {% if app.user %}
             <div class="mb-3">
-                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
             </div>
-            {% endif %}
+        {% endif %}
+                
+        <div class="container-login">
+            <h1>Inscription</h1>
+            <input name="email" type="text" aria-label="Entrez votre adresse mail" placeholder="Adresse e-mail" value="{{ app.request.request.get('email') }}" class="form-control form-control mb-3">
+            <input name="password" type="password" aria-label="Entrez votre mot de passe" placeholder="Mot de passe" value="" class="form-control form-control mb-3">
 
-            <div class="w-full form-container">
-                <input name="email" type="text" aria-label="Enter your email address" placeholder="Adresse e-mail" class="focus:ring-gray-700 focus:border-gray-400 text-gray-base w-full mr-3 py-3 px-4 h-2 border border-gray-primary rounded mb-2 text-login" value="{{pseudo}}">
-                <input name="password" type="password" aria-label="Enter your password" placeholder="Mot de passe" class="focus:ring-gray-700 focus:border-gray-400 text-gray-base w-full mr-3 py-3 px-4 h-2 border border-gray-primary rounded mb-2 text-login" value="">
+            <button type="submit" aria-label="Se connecter à votre compte" class="btn btn-warning mb-3">Connexion</button>
 
-                <button type="submit" aria-label="Login to your account" class="bg-button text-white w-full rounded h-8 font-bold mt-1 text-login py-2">Connexion</button>
-            </div>
-
-            <a class="text-login text-center mt-6" href="#">Mot de passe oublié?</a>
-
+            <a class="" href="#">Mot de passe oublié ?</a>
         </div>
 
-            <div class="login-container rounded text-login"><p class="text-sm">Don't have an account? <a class="font-bold text-ghurka-dark" data-testid="sign-up" href="{{path('app_inscription')}}">Sign Up</a></p></div>
-        </div>
-    </div>
-
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-{# <form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
-        </div>
-    {% endif %}
-
-    <div class="container text-center col-4">
-    <h1 class="h3 mb-3 font-weight-normal">Veuillez vous connecter</h1>
-    
-
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ pseudo }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-    <label for="inputPassword" class=" mt-4">Mot de passe</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required> #}
-
-    {# <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"> #}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    </form>
 {% endblock %}

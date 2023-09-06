@@ -2,4 +2,13 @@
     .logo-title {
         display: none;
     }
+
+    .container-login {
+        width: 100%;
+    }
+
+    .container-inscription {
+        width: 100%;
+    }
+
 }

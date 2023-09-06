@@ -17,13 +17,19 @@ class InscriptionController extends AbstractController
     /**
      * @Route("/inscription", name="app_inscription")
      */
-    public function index(Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $passwordHasher): Response
-    {
-        $user = new User();
-        $form = $this->createForm(InscriptionType::class, $user);
-        $form->handleRequest($request);
+    public function index(Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $passwordHasher): Response {
+    $user = new User();
+    $form = $this->createForm(InscriptionType::class, $user);
+    $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+    if ($form->isSubmitted() && $form->isValid()) {
+        // Vérifiez si l'e-mail existe déjà dans la base de données
+        $existingUser = $manager->getRepository(User::class)->findOneBy(['email' => $user->getEmail()]);
+
+        if ($existingUser) {
+            $this->addFlash('danger', 'Cet e-mail est déjà utilisé.');
+        } else {
+            // L'e-mail n'existe pas encore, vous pouvez créer l'utilisateur
             $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassword);
 
@@ -34,9 +40,11 @@ class InscriptionController extends AbstractController
             $form = $this->createForm(InscriptionType::class, new User());
             return $this->redirectToRoute('app_login');
         }
-        
-        return $this->render('inscription/index.html.twig', [
-            'form' => $form->createView(),
-        ]);
     }
+
+    return $this->render('inscription/index.html.twig', [
+        'form' => $form->createView(),
+    ]);
+}
+
 }
