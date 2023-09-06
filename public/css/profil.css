@@ -1,3 +1,8 @@
-.card-profil {
-    width: 100%;
+.container-parametre {
+    height: 200px;
+    width: 30%;
+    margin: auto;
+    margin-top: 7%;
+    display: flex;
+    flex-direction: column;
 }
