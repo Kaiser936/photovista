@@ -1,0 +1,42 @@
+/* Login */
+body {
+    background-color: #f9f9f9;
+    height: 100vh;
+}
+
+.login-container {
+    border: 1px solid grey;
+    border-radius: .25rem;
+    background-color: white;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container:first-child {
+    margin-top: 25vh;
+}
+
+
+img {
+    width: 55%;
+}
+
+.form-container {
+    margin: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-login {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.bg-button {
+    background-color: #bd8469;
+}

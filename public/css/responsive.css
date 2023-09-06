@@ -1,3 +1,5 @@
-@media screen (768px) {
-    
+@media screen and (max-width: 767px) {
+    .logo-title {
+        display: none;
+    }
 }

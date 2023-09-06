@@ -1,7 +1,4 @@
 /* Imports */
 @import 'nav.css';
-
-.img-form {
-    width: 70%;
-    align-items: center;
-}
+@import 'responsive.css';
+/* @import 'login.css'; */
