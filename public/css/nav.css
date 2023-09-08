@@ -2,29 +2,10 @@
     max-width: 10%;
 }
 
-.connexion {
-    background-color: rgb(255, 128, 0);
+.circle-link:hover {
+    background-color: rgb(255, 218, 150);
     border: none;
-    border-radius: 5px;
-    margin: 0px 3px;
-}
-
-.connexion a {
-    color: rgb(255, 255, 255);
-}
-
-.connexion:hover {
-    background-color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 5px;
-    margin: 0px 3px;
-}
-
-.nav-item:hover {
-    background-color: rgb(255, 128, 0);
-    border: none;
-    border-radius: 5px;
-    margin: 0px 3px;
+    padding: 10px;
 }
 
 .nav-item a:hover {
@@ -37,4 +18,17 @@
 
 header {
     background-color: rgb(255, 255, 255);
+}
+
+.circle-link {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    background-color: rgb(255, 191, 149);
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    margin: 10px 15px;
+    padding: 1rem;
 }

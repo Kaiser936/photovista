@@ -4,9 +4,20 @@
 
 {% block body %}
 <div class="container">
-
     <h1>Nouvelle publication</h1>
-        {{form (form)}}
+    <div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
+    <div class="card-body p-lg-5 p-4 w-100 border-0">
+        <div class="row">
+            {{ form_start(form) }}
 
+            {{ form_row(form.title, {'attr': {'class': 'form-control form-control mb-3'}}) }}
+            {{ form_row(form.description, {'attr': {'class': 'form-control form-control mb-3'}}) }}
+            {{ form_row(form.picture, {'attr': {'class': 'form-control form-control mb-3'}}) }}
+            {{ form_row(form.submit, {'attr': {'class': 'btn btn-success mb-3'}}) }}
+
+            {{ form_end(form) }}
+        </div>
+    </div><!--//card-->
+    </div>
 </div>
 {% endblock %}

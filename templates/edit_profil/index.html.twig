@@ -4,13 +4,6 @@
 
 {% block body %}
 <div class="container-inscription">
-
-    <div>
-        <button class="btn btn-primary mt-4">
-            <a href="{{ path('app_profil') }}" class="text-white"><i class="fa-solid fa-left-long"> Retour</i>
-            </a>
-        </button>
-    </div>
     <h1>Modifier mon profil</h1>    
     
     {{ form_start(form) }}
@@ -19,9 +12,11 @@
     {{ form_row(form.password, {'attr': {'class': 'form-control form-control mb-3'}}) }}
     {{ form_row(form.pseudo, {'attr': {'class': 'form-control form-control mb-3'}}) }}
     {{ form_row(form.biographie, {'attr': {'class': 'form-control form-control mb-3'}}) }}
+    <div>
     <button type="submit" class="btn btn-warning form-control mb-3">Valider</button>
-
-
+    <a href="{{ path('app_profil') }}" class="text-white"><button class="btn btn-warning form-control mb-3">Annuler
+    </button></a>
+</div>
 </div>
 
 

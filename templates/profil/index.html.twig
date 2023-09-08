@@ -9,8 +9,38 @@
     <h1 class="text-center">Profil de {{ user.pseudo }}</h1>
     {% endif %}
 
+    {# Afficage des photos de l'utilisateur #}
     <div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
-                            
+    <div class="card-body p-lg-5 p-4 w-100 border-0">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="mb-4 font-xxl fw-700 mont-font mb-lg-5 mb-4 font-md-xs">Mes publications</h4>
+
+                <div class="row">
+                {% for post in userPosts %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100">
+                            <img src="{{ asset('uploads/' ~ post.picture) }}" class="card-img-top h-100" alt="{{ post.title }} ">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ post.title }}</h5>
+                                <p class="card-text">{{ post.description }}</p>
+                                <a href="{{ path('app_single_post', {'id': post.id}) }}"><button class="btn btn-warning">Gerer</button></a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            
+            
+                
+            </div>
+        </div>
+    </div>
+    </div>
+
+    
+    {# Section parametres #}
+    <div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
         <div class="card-body p-lg-5 p-4 w-100 border-0">
             <div class="row">
                 <div class="col-lg-12">
@@ -18,26 +48,23 @@
                     <div class="nav-caption fw-600 font-xssss text-grey-500 mb-2">Mon compte</a></div>
                     <ul class="list-inline mb-4">
                         <li class="list-inline-item d-block border-bottom me-0"><a href="{{path('app_edit_profil', {'id': user.id})}}" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-home font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Gérer mon profil</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                        <li class="list-inline-item d-block border-bottom me-0"><a href="" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-home font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Social Account</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
+                        <li class="list-inline-item d-block border-bottom me-0"><a href="#" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-home font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Réseaux sociaux</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
+                        <li class="list-inline-item d-block border-bottom me-0"><a href="#" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-home font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Supprimer mon compte</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
                     </ul>
+                    {% if 'ROLE_ADMIN' in user.roles %}
+                    <!-- Code à exécuter si l'utilisateur a le rôle "ROLE_ADMIN" -->
+                    <div class="nav-caption fw-600 font-xsss text-grey-500 mb-2">Back office</div>
+                        <ul class="list-inline">
+                            <li class="list-inline-item d-block border-bottom me-0"><a href="#" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-help-circle font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Gestion back office</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
                     <div class="nav-caption fw-600 font-xsss text-grey-500 mb-2">Autre</div>
                         <ul class="list-inline">
                             <li class="list-inline-item d-block border-bottom me-0"><a href="#" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-help-circle font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Aide</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
                             <li class="list-inline-item d-block me-0"><a href="{{ path('app_logout') }}" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-red-gradiant text-white feather-lock font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Deconnexion</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
                         </ul>
                     </div>
-
-                    {% if 'ROLE_ADMIN' in user.roles %}
-                    <!-- Code à exécuter si l'utilisateur a le rôle "ROLE_ADMIN" -->
-
-
-                    <div class="nav-caption fw-600 font-xsss text-grey-500 mb-2">Back office</div>
-                        <ul class="list-inline">
-                            <li class="list-inline-item d-block border-bottom me-0"><a href="#" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-help-circle font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Gerer les utilisateurs</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                            <li class="list-inline-item d-block me-0"><a href="#" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-red-gradiant text-white feather-lock font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Gerer les publications</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
-                        </ul>
-                    </div>
-                {% endif %}
                 </div>
             </div>
         </div>

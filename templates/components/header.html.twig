@@ -3,7 +3,7 @@
 <div class="container">
 <nav class="navbar navbar-expand-lg custom-navbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ path('app_home') }}">
         <div class="d-flex align-items-center">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
             <p class="logo-title mb-0">PHOTOVISTA</p>
@@ -15,35 +15,62 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
-                </li>
-            {% if is_granted('ROLE_USER') %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_profil') }}">Profil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Rechercher</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Publier</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <button class="connexion">
-                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_inscription') }}">Inscription</a>
-                </li>
-            {% endif %}
-            </ul>
-        </div>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_home') }}">
+                <span class="circle-link">
+                    <i class="fa-solid fa-house"></i>
+                </span>
+            </a>
+        </li>
+        {% if is_granted('ROLE_USER') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_profil') }}">
+                    <span class="circle-link">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path ('app_galerie')}}">
+                    <span class="circle-link">
+                        <i class="fa-solid fa-globe"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_add_post') }}">
+                    <span class="circle-link">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_logout') }}">
+                    <span class="circle-link">
+                        <i class="fa-regular fa-circle-xmark"></i>
+                    </span>
+                </a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_login') }}">
+                        <span class="circle-link">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                        </span>
+                    </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_inscription') }}">
+                    <span class="circle-link">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
     </div>
 </nav>
 </div>

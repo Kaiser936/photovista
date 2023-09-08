@@ -16,9 +16,12 @@ class ProfilController extends AbstractController
     public function index(EntityManagerInterface $manager): Response
     {
         $user = $this->getUser();
+        $userPosts = $manager->getRepository(Post::class)->findBy(['created_by' => $user]);
+
 
         return $this->render('profil/index.html.twig', [
             'user' => $user,
+            'userPosts' => $userPosts,
         ]);
     }
 }

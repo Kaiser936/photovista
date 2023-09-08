@@ -1,3 +1,13 @@
 body {
     background-color: rgb(235, 241, 240);
 }
+
+.pseudo {
+    font-weight: bold;
+}
+
+.custom-img-size {
+    width: 200px; /* Ajustez la largeur souhaitée en pixels */
+    height: 300px; /* Ajustez la hauteur souhaitée en pixels */
+    border-radius: 10%;
+}

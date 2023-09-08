@@ -55,11 +55,9 @@ class AddPostController extends AbstractController
             $manager->persist($post);
             $manager->flush();
 
-            $this->addFlash('success', 'Le livre a bien été ajouté');
-
             $form = $this->createForm(PostType::class, new Post());
 
-            return $this->redirectToRoute('app_publication');
+            return $this->redirectToRoute('app_profil');
         }
 
         return $this->render('add_post/index.html.twig', [
