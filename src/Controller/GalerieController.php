@@ -1,11 +1,7 @@
 <?php
-
 namespace App\Controller;
 
-use DateTime;
 use App\Entity\Post;
-use App\Entity\Comment;
-use App\Form\CommentType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,12 +13,13 @@ class GalerieController extends AbstractController
     /**
      * @Route("/galerie", name="app_galerie")
      */
-    public function index(EntityManagerInterface $manager): Response
+    public function index(EntityManagerInterface $manager, Request $request): Response
     {
-        $post = $manager->getRepository(Post::class)->findAll();
+        // Récupérer tous les posts
+        $posts = $manager->getRepository(Post::class)->findAll();
 
         return $this->render('galerie/index.html.twig', [
-            'post' => $post,
+            'posts' => $posts,
         ]);
     }
 }

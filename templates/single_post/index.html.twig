@@ -18,9 +18,12 @@
                     <p class="card-text">{{post.description}}</p>
                     <!-- Boutons à droite -->
                     <div class="text-right">
-                        <a href="{{path('app_edit_post',{id:post.id})}}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                    {% if app.user and app.user == post.created_by %}
+                        <a href="{{ path('app_edit_post', {'id': post.id}) }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#suppression"><i class="fa-solid fa-trash-can"></i></a>
-                        <a href="{{ path('app_profil') }}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Retour</a>
+                    {% endif %}
+                        <a href="javascript:history.back()" class="btn btn-secondary"> <i class="fa-solid fa-arrow-left"></i>Retour</a>
+                        <a href="#" data-bs-target="#commentaireModal" data-bs-toggle="modal"class="btn btn-secondary"> <i class="fa-solid fa-arrow-left"></i>Commenter</a>
                     </div>
                 </div>
             </div>
@@ -32,15 +35,36 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fs-5" id="suppressionLabel">Attention !</h5>
+                    <h5 class="modal-title fs-5">Suppression</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Voulez-vous supprimer cette publication ?
+                    {% include 'AppBundle:Commentaire:comment_form.html.twig' with {'form': form} %}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
                     <a href="{{path('app_single_post_remove',{id:post.id})}}" type="button" class="btn btn-primary">Oui</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Modal de commentaire #}
+    <div class="modal fade" id="commentaireModal" tabindex="-2" aria-labelledby="commentaireModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-5">Commentaire</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(commentForm) }}
+                    {{ form_widget(commentForm.texte) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                    {{ form_end(commentForm) }}
                 </div>
             </div>
         </div>

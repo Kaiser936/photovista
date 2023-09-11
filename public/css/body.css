@@ -3,7 +3,10 @@ body {
 }
 
 .pseudo {
-    font-weight: bold;
+    font-weight: bold;    
+}
+.pseudo::first-letter {
+    text-transform: uppercase;
 }
 
 .custom-img-size {
