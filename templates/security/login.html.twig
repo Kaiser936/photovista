@@ -21,8 +21,13 @@
 
             <button type="submit" aria-label="Se connecter à votre compte" class="btn btn-warning mb-3">Connexion</button>
 
-            <a class="" href="#">Mot de passe oublié ?</a>
+            <a class="text-center" href="#">Mot de passe oublié ?</a>
+            <br>
+
+            <a class="btn btn-success" href="{{ path('app_inscription') }}">Créer un compte</a>
         </div>
+
+
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
     </form>

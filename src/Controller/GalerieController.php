@@ -13,7 +13,7 @@ class GalerieController extends AbstractController
     /**
      * @Route("/galerie", name="app_galerie")
      */
-    public function index(EntityManagerInterface $manager, Request $request): Response
+    public function index(EntityManagerInterface $manager): Response
     {
         // Récupérer tous les posts
         $posts = $manager->getRepository(Post::class)->findAll();

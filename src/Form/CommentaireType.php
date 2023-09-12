@@ -18,7 +18,8 @@ class CommentaireType extends AbstractType
         ->add('texte',TextType::class,[
             'label' => ' ',
             'attr' => [
-                'placeholder' => 'Votre commentaire'
+                'placeholder' => 'Votre commentaire',
+                'class' => 'form-control'
             ],
         ])
         ->add('submit',SubmitType::class,[

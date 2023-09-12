@@ -7,12 +7,8 @@ use App\Entity\Commentaire;
 use App\Form\CommentaireType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SinglePostController extends AbstractController
@@ -39,12 +35,15 @@ class SinglePostController extends AbstractController
             return $this->redirectToRoute('app_single_post', ['id' => $id]);
         }
 
+        // Récupérez les commentaires associés au post
+        $commentaires = $post->getCommentaires();
+
         return $this->render('single_post/index.html.twig', [
             'post' => $post,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'commentaires' => $commentaires, // Passez les commentaires au modèle Twig
         ]);
     }
-
 
 
         /**
@@ -60,4 +59,21 @@ class SinglePostController extends AbstractController
         //  2- redirection sur la page d'accueil
         return $this->redirectToRoute('app_publication');
     }
+
+/**
+ * @Route("/single/post/comment_remove/{id}", name="app_single_post_comment_remove")
+ */
+public function comment_remove($id, EntityManagerInterface $manager)
+{
+    $comment = $manager->getRepository(Commentaire::class)->find($id);
+
+    $postId = $comment->getPost()->getId(); // Récupérez l'ID du post associé au commentaire
+
+    $manager->remove($comment);
+    $manager->flush();
+
+    // Redirigez vers la page du post après la suppression du commentaire
+    return $this->redirectToRoute('app_single_post', ['id' => $postId]);
+}
+
 }

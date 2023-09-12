@@ -4,7 +4,12 @@
 
 {% block body %}
 <div class="container">
+    {% if app.user and app.user == post.created_by %}
     <h1>Gérer ma Publication</h1>
+    {% else %}
+    <h1>Publication de {{ post.created_by.pseudo }}</h1>
+    {% endif %}
+
     <div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
         <div class="card-body p-lg-5 p-4 w-100 border-0">
             <div class="row">
@@ -14,29 +19,53 @@
                 </div>
                 <!-- Titre et description à droite -->
                 <div class="col-md-6">
+                    <a href="javascript:history.back()" class="btn btn-warning"> <i class="fa-solid fa-arrow-left"></i> Retour</a>
+                    <br><br>
                     <h5 class="card-title">{{post.title}}</h5>
                     <p class="card-text">{{post.description}}</p>
                     <!-- Boutons à droite -->
                     <div class="text-right">
+                    
                     {% if app.user and app.user == post.created_by %}
                         <a href="{{ path('app_edit_post', {'id': post.id}) }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#suppression"><i class="fa-solid fa-trash-can"></i></a>
                     {% endif %}
-                        <a href="javascript:history.back()" class="btn btn-secondary"> <i class="fa-solid fa-arrow-left"></i>Retour</a>
-                        <a href="#" data-bs-target="#commentaireModal" data-bs-toggle="modal"class="btn btn-secondary"> <i class="fa-solid fa-comment"></i></a>
+                    </div>
 
+                    <div class="comments">
+                        <h2>Commentaires</h2>
+                            {{ form(form) }}
+
+                            <br><br>
+                        <ul>
+                            {% for commentaire in commentaires %}
+                                <li>
+                                    {% if commentaire.auteur is not null %}
+                                        <span class="author">{{ commentaire.auteur.pseudo }}</span>
+                                        {{ commentaire.texte }}
+                                        
+                                        {% if app.user %}
+                                        {% if commentaire.auteur == app.user or post.created_by == app.user %}
+                                            <a href="{{ path('app_single_post_comment_remove', {'id': commentaire.id}) }}" class="btn"><i class="fa-solid fa-trash-can"></i></a>
+                                        {% endif %}
+                                
+                                        {% endif %}
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal de suppression-->
+    <!-- Modal de suppression d'article-->
     <div class="modal fade" id="suppression" tabindex="-1" aria-labelledby="suppressionLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title fs-5">Commentaire</h5>
+                    <h5 class="modal-title fs-5">Attention !</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -51,18 +80,7 @@
     </div>
 </div>
 
-    {# Modal de comentaire #}
-    <div class="modal fade" id="commentaireModal" tabindex="-2" aria-labelledby="#commentaireModalLabel" aria-hidden="true" >
-    <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title fs-5" id="suppressionLabel">Commentaire</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            {{form(form)}}
-        </div>    
-    </div>
+</div>
 </div>
 </div>
 

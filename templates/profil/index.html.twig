@@ -18,9 +18,10 @@
 
                 <div class="row">
                 {% for post in userPosts %}
-                    <div class="col-md-4 mb-3">
-                        <div class="card h-100">
-                            <img src="{{ asset('uploads/' ~ post.picture) }}" class="card-img-top h-100" alt="{{ post.title }} ">
+                    <div class="col-md-2 mb-3">
+                        <div class="card h-25">
+                        <img src="{{ asset('uploads/' ~ post.picture) }}" class="card-img-top custom-image" alt="{{ post.title }}">
+
                             <div class="card-body">
                                 <h5 class="card-title">{{ post.title }}</h5>
                                 <p class="card-text">{{ post.description }}</p>
@@ -55,7 +56,7 @@
                     <!-- Code à exécuter si l'utilisateur a le rôle "ROLE_ADMIN" -->
                     <div class="nav-caption fw-600 font-xsss text-grey-500 mb-2">Back office</div>
                         <ul class="list-inline">
-                            <li class="list-inline-item d-block border-bottom me-0"><a href="#" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-help-circle font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Gestion back office</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
+                            <li class="list-inline-item d-block border-bottom me-0"><a href="{{path('admin')}}" class="pt-2 pb-2 d-flex align-items-center"><i class="btn-round-md bg-primary-gradiant text-white feather-help-circle font-md me-3"></i> <h4 class="fw-600 font-xsss mb-0 mt-0">Gestion back office</h4><i class="ti-angle-right font-xsss text-grey-500 ms-auto mt-3"></i></a></li>
                         </ul>
                     </div>
                     {% endif %}
