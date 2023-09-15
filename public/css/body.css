@@ -68,4 +68,14 @@ body {
     color: #333;
 }
 
-/* Ajoutez d'autres styles au besoin */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: grey; /* Remplacez par la couleur de fond souhaitée */
+}
+
+.befor-footer {
+        margin-bottom: 300px; /* Ajoutez la marge basse souhaitée */
+    }
+    
