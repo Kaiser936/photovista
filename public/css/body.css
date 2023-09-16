@@ -79,3 +79,23 @@ h1, h2, h3, h4, h5, h6 {
 button {
     background-color: #008080 !important;
 }
+
+/* Container-main */
+.container-main {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+    min-height: 80vh;
+}
+
+/* Carousel */
+.carousel-container {
+    width: 60%; /* Largeur souhaitée, par exemple, 60% de la largeur de la page */
+    height: 300px; /* Hauteur souhaitée */
+    overflow: hidden; /* Masquer le contenu débordant */
+}
+

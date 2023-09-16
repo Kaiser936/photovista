@@ -3,8 +3,11 @@
 {% block title %}Ajout d'un post{% endblock %}
 
 {% block body %}
-<div class="container befor-footer">
+<div class="container">
+<div class="container-main">
+
     <h1>Nouvelle publication</h1>
+
     <div class="card w-100 border-0 bg-white shadow-xs p-0 mb-4">
     <div class="card-body p-lg-5 p-4 w-100 border-0">
         <div class="row">
@@ -13,11 +16,12 @@
             {{ form_row(form.title, {'attr': {'class': 'form-control form-control mb-3'}}) }}
             {{ form_row(form.description, {'attr': {'class': 'form-control form-control mb-3'}}) }}
             {{ form_row(form.picture, {'attr': {'class': 'form-control form-control mb-3'}}) }}
-            {{ form_row(form.submit, {'attr': {'class': 'btn btn-success mb-3'}}) }}
+            {{ form_row(form.submit, {'attr': {'class': 'btn mb-3 text-white'}}) }}
 
             {{ form_end(form) }}
         </div>
-    </div><!--//card-->
     </div>
+    </div>
+</div>
 </div>
 {% endblock %}

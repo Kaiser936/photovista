@@ -3,7 +3,7 @@
 {% block title %}Mon profil{% endblock %}
 
 {% block body %}
-    <div class="container befor-footer">
+    <div class="container-main">
 
     {% if user is not null %}
     <h1 class="text-center">Profil de {{ user.pseudo }}</h1>
@@ -17,20 +17,21 @@
                 <h4 class="mb-4 font-xxl fw-700 mont-font mb-lg-5 mb-4 font-md-xs">Mes publications</h4>
 
                 <div class="row">
-                {% for post in userPosts %}
-                    <div class="col-md-2 mb-3">
-                        <div class="card h-25">
-                        <img src="{{ asset('uploads/' ~ post.picture) }}" class="card-img-top custom-image" alt="{{ post.title }}">
-
-                            <div class="card-body">
-                                <h5 class="card-title">{{ post.title }}</h5>
-                                <p class="card-text">{{ post.description }}</p>
-                                <a href="{{ path('app_single_post', {'id': post.id}) }}"><button class="btn btn-warning">Gerer</button></a>
+                    {% for post in userPosts %}
+                        <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="card" style="height: 100%;">
+                                <img src="{{ asset('uploads/' ~ post.picture) }}" class="card-img-top custom-image" alt="{{ post.title }}" style="object-fit: cover; max-height: 100%;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ post.title }}</h5>
+                                    <p class="card-text">{{ post.description|slice(0, 10) ~ (post.description|length > 10 ? '...' : '') }}</p>
+                                    <a href="{{ path('app_single_post', {'id': post.id}) }}" class="btn btn-primary btn-sm">Gérer</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
                 </div>
+            
+
             
             
                 

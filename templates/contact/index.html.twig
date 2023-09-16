@@ -3,7 +3,7 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-
+<div class="container-main">
 <div class="container-inscription befor-footer">
     <h1 class="text-center">Formulaire de contact</h1>
 
@@ -20,9 +20,10 @@
         {{ form_row(form.nom, {'attr': {'class': 'form-control form-control mb-3'}}) }}
         {{ form_row(form.email, {'attr': {'class': 'form-control form-control mb-3'}}) }}
         {{ form_row(form.message, {'attr': {'class': 'form-control form-control mb-3'}}) }}
-        {{ form_row(form.submit, {'attr': {'class': 'btn btn-warning mb-3'}}) }}
+        {{ form_row(form.submit, {'attr': {'class': 'btn mb-3 text-white'}}) }}
 
         {{ form_end(form) }}
+</div>
 </div>
 
 

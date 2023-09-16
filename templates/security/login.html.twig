@@ -3,6 +3,7 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
+<div class="container-main">
     <form method="post" class="">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -19,7 +20,7 @@
             <input name="email" type="text" aria-label="Entrez votre adresse mail" placeholder="Adresse e-mail" value="{{ app.request.request.get('email') }}" class="form-control form-control mb-3">
             <input name="password" type="password" aria-label="Entrez votre mot de passe" placeholder="Mot de passe" value="" class="form-control form-control mb-3">
 
-            <button type="submit" aria-label="Se connecter à votre compte" class="btn btn-warning mb-3">Connexion</button>
+            <button type="submit" aria-label="Se connecter à votre compte" class="btn mb-3 text-white">Connexion</button>
 
             <a class="text-center" href="#">Mot de passe oublié ?</a>
             <br>
@@ -31,4 +32,5 @@
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
     </form>
+</div>
 {% endblock %}

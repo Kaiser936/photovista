@@ -1,7 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
+    <div class="container-main">
 
+    <h1 class="text-center">Bienvenue sur PhotoVista</h1>
+    
+    <div class="m-5">
+        <h4>Découvrez un monde où la photographie prend vie.</h4> 
+
+        <p>PhotoVista est bien plus qu'un simple réseau social ; c'est une communauté passionnée de photographes, d'artistes visuels et d'amateurs de belles images. Notre plateforme a été créée par des photographes, pour les photographes.
+        <br>
+
+        <H6>Ce que PhotoVista vous offre :</H6>
+
+        📸 <b>Partagez Votre Art :</b> Téléchargez et partagez vos meilleures photos avec une communauté qui comprend et apprécie l'art de la photographie.
+        <br>
+
+        🤝 <b>Connectez avec des Pairs :</b> Établissez des liens avec d'autres photographes du monde entier, échangez des idées, et créez ensemble.
+        <br>
+
+        🌟 <b>Découvrez l'Inspiration :</b> Parcourez une collection infinie d'images pour stimuler votre créativité et trouver l'inspiration.
+        <br>
+        🗓️ <b>Événements et Ateliers :</b> Restez à jour avec les derniers événements, ateliers et concours photographiques.
+        <br>
+        🎁 <b>Offres Exclusives :</b> Profitez d'offres spéciales sur l'équipement, les logiciels et les ressources pour photographes.
+        <br><br>
+        Rejoignez notre communauté dès aujourd'hui et plongez dans un univers de beauté visuelle. Que vous soyez un photographe professionnel chevronné ou que vous veniez de découvrir l'amour de la photographie, PhotoVista vous accueille les bras ouverts.</p>
+    </div>
+
+    <div id="inscription" class="m-5">
+        <p>Inscrivez-vous dès maintenant et partagez votre vision unique du monde à travers l'objectif de votre appareil photo. Bienvenue dans la famille PhotoVista !</p>
+
+
+        <a href="{{path('app_inscription')}}" class="text-center">
+            <button class="btn text-white">Inscrivez-vous maintenant !</button>
+        </a>
+    </div>
+
+
+
+
+    <div id="dernieres_publications" class="m-5">
+        <h2 class="text-center">Dernieres Publications</h2>
+
+        <div class="row">
+        {% for post in dernieresPublications %}
+            <div class="col-md-3">
+                <div class="card" style="height: 400px;">
+                    <img src="{{ asset('uploads/' ~ post.picture) }}" alt="{{ post.title }}" class="card-img-top" style="object-fit: cover; height: 60%;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.description }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+
+
+</div>
 {% endblock %}

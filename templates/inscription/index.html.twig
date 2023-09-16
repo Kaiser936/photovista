@@ -5,7 +5,8 @@
 
 {% block body %}
 
-<div class="container-inscription befor-footer">
+<div class="container">
+<div class="container-main">
     <h1>Inscription</h1>
     
     {% for message in app.flashes('success') %}
@@ -22,9 +23,10 @@
     {{ form_row(form.password, {'attr': {'class': 'form-control form-control mb-3'}}) }}
     {{ form_row(form.pseudo, {'attr': {'class': 'form-control form-control mb-3'}}) }}
     {{ form_row(form.biographie, {'attr': {'class': 'form-control form-control mb-3'}}) }}
-    {{ form_row(form.submit, {'attr': {'class': 'btn btn-warning mb-3'}}) }}
+    {{ form_row(form.submit, {'attr': {'class': 'btn mb-3 text-white'}}) }}
 
     {{ form_end(form) }}
+</div>
 </div>
 
 {% endblock %}
