@@ -1,34 +1,11 @@
+header {
+    background-color: #1F2D3D;
+}
+
 .logo {
     max-width: 10%;
 }
 
-.circle-link:hover {
-    background-color: rgb(255, 218, 150);
-    border: none;
-    padding: 10px;
-}
-
-.nav-item a:hover {
-    color: white;
-}
-
 .nav-item a {
-    color: rgb(17, 17, 17) !important;
-}
-
-header {
-    background-color: rgb(255, 255, 255);
-}
-
-.circle-link {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    background-color: rgb(255, 191, 149);
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    margin: 10px 15px;
-    padding: 1rem;
+    color: rgb(255, 255, 255) !important;
 }

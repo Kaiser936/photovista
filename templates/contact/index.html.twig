@@ -15,7 +15,6 @@
         <div class="alert alert-danger">{{ message }}</div>
     {% endfor %}
 
-    <form id="contactType">
         {{ form_start(form) }}
 
         {{ form_row(form.nom, {'attr': {'class': 'form-control form-control mb-3'}}) }}
@@ -24,7 +23,6 @@
         {{ form_row(form.submit, {'attr': {'class': 'btn btn-warning mb-3'}}) }}
 
         {{ form_end(form) }}
-    </form>
 </div>
 
 

@@ -28,32 +28,31 @@ class ContactController extends AbstractController
             $messageText = $data['message'];
 
             // Créez le contenu de l'e-mail
-            $contenu = "De: $nom \n\nEmail: $email\n\nMessage: $messageText";
+            $contenu = "De: $nom\n\nEmail: $email\n\nMessage: $messageText";
 
             // Créez une instance de PHPMailer
             $mail = new PHPMailer(true);
             $mail->isSMTP();
             // Configurer les paramètres SMTP
             $mail->Host = 'smtp.gmail.com';
-            $mail->Port = 465;
-            $mail->SMTPSecure = 'ssl';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
             $mail->SMTPAuth = true;
             $mail->Username = 'soufiane.mohamad@gmail.com';
             $mail->Password = 'qrvowxepcdkwvrcm';
-            $mail->setFrom('soufiane.mohamad@gmail.com', $nom);
+            $mail->setFrom('photovista@gmail.com', $nom);
             $mail->addAddress('soufiane.mohamad@gmail.com', 'Soufiane Mohamad');
             // Configurer le sujet et le contenu de l'e-mail
-            $mail->Subject = "Nouveau message de $nom";
+            $mail->Subject = "PhotoVista - Nouveau message de $nom";
             $mail->Body = $contenu;
 
             if ($mail->send()) {
-                // Message de succès
-
                 $this->addFlash('success', 'Votre message a bien été envoyé !');
             } else {
-                // Message d'erreur
                 $this->addFlash('error', 'Une erreur s\'est produite lors de l\'envoi du message.');
             }
+
+            return $this->redirectToRoute('contact');
         }
 
         // Affichez la page de contact avec le formulaire

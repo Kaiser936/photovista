@@ -1,5 +1,13 @@
 body {
-    background-color: rgb(235, 241, 240);
+    background-color: #D5DBDB;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+}
+
+*{
+    font-family: 'Roboto', sans-serif;
 }
 
 .pseudo {
@@ -10,8 +18,8 @@ body {
 }
 
 .custom-img-size {
-    width: 200px; /* Ajustez la largeur souhaitée en pixels */
-    height: 300px; /* Ajustez la hauteur souhaitée en pixels */
+    width: 200px;
+    height: 300px;
     border-radius: 10%;
 }
 
@@ -68,14 +76,6 @@ body {
     color: #333;
 }
 
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: grey; /* Remplacez par la couleur de fond souhaitée */
+button {
+    background-color: #008080 !important;
 }
-
-.befor-footer {
-        margin-bottom: 300px; /* Ajoutez la marge basse souhaitée */
-    }
-    

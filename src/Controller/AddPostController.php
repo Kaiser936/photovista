@@ -5,7 +5,6 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Post;
 use App\Form\PostType;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +17,7 @@ class AddPostController extends AbstractController
 {
     /**
      * @Route("/add/post", name="app_add_post")
+     * 
      */
     public function index(Request $request, EntityManagerInterface $manager, SluggerInterface $slugger): Response
     {
