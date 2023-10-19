@@ -15,12 +15,17 @@ class PublicationController extends AbstractController
      */
     public function index(EntityManagerInterface $manager): Response
     {
-        $userId = $this->getUser(); // Récupère l'ID de l'utilisateur connecté
+        // Récupère l'ID de l'utilisateur connecté
+        $userId = $this->getUser();
+    
+        // Récupère les publications de l'utilisateur à partir de la base de données en utilisant son ID
         $posts = $manager->getRepository(Post::class)->findBy(['created_by' => $userId]);
-
+    
+        // Rend la page de publications ("index.html.twig") en passant les publications (posts) à la vue
         return $this->render('publication/index.html.twig', [
             'posts' => $posts,
         ]);
     }
+    
 
 }

@@ -40,8 +40,6 @@
     </div>
 
 
-
-
     <div id="dernieres_publications" class="m-5">
         <h2 class="text-center">Dernieres Publications</h2>
 
@@ -51,7 +49,11 @@
                 <div class="card" style="height: 400px;">
                     <img src="{{ asset('uploads/' ~ post.picture) }}" alt="{{ post.title }}" class="card-img-top" style="object-fit: cover; height: 60%;">
                     <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
+                        <div class="row">
+                            <h5 class="card-title">
+                                {{ post.title }} - <span class="font-weight-bold">{{ post.created_by.pseudo }}</span>
+                            </h5>
+                        </div>
                         <p class="card-text">{{ post.description }}</p>
                     </div>
                 </div>

@@ -14,23 +14,24 @@ class LoginController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
-
-        // get the login error if there is one
+        // Récupère toute erreur de connexion s'il y en a une
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
+    
+        // Récupère le dernier nom d'utilisateur saisi par l'utilisateur
         $pseudo = $authenticationUtils->getLastUsername();
-
+    
+        // Rend la page de connexion ("login.html.twig") en passant le nom d'utilisateur (pseudo) et l'erreur de connexion (error)
         return $this->render('security/login.html.twig', ['pseudo' => $pseudo, 'error' => $error]);
     }
-
+    
     /**
      * @Route("/logout", name="app_logout")
      */
     public function logout(): void
     {
+        // Cette méthode est vide et n'a pas besoin d'être implémentée. Elle sera interceptée par le pare-feu de sécurité Symfony pour gérer la déconnexion.
+        // L'exception logique indique qu'aucun code n'est nécessaire dans cette méthode.
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
+    
 }
